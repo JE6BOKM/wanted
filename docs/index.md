@@ -1,9 +1,9 @@
-# piedpiper-web
+# preonboarding
 
-[![Build Status](https://travis-ci.org/The owner of the repository. Either your github username or organization name./piedpiper-web.svg?branch=master)](https://travis-ci.org/The owner of the repository. Either your github username or organization name./piedpiper-web)
+[![Build Status](https://travis-ci.org/The owner of the repository. Either your github username or organization name./preonboarding.svg?branch=master)](https://travis-ci.org/The owner of the repository. Either your github username or organization name./preonboarding)
 [![Built with](https://img.shields.io/badge/Built_with-Cookiecutter_Django_Rest-F7B633.svg)](https://github.com/agconti/cookiecutter-django-rest)
 
-Its all about a Weissman score > 5.0. Check out the project's [documentation](http://The owner of the repository. Either your github username or organization name..github.io/piedpiper-web/).
+Its all about a Weissman score > 5.0. Check out the project's [documentation](https://github.com/wanted-team6/preonboarding-boilerplate).
 
 # Prerequisites
 

@@ -1,8 +1,8 @@
-site_name: piedpiper
+site_name: preonboarding
 site_description: Its all about a Weissman score > 5.0
-repo_url: https://github.com/The owner of the repository. Either your github username or organization name./piedpiper-web
+repo_url: https://github.com/wanted-team6/preonboarding-boilerplate
 site_dir: site
-copyright: Copyright &copy; 2020, <a href="https://github.com/The owner of the repository. Either your github username or organization name.">The owner of the repository. Either your github username or organization name.</a>.
+copyright: Copyright &copy; 2020, <a href="hhttps://github.com/wanted-team6/preonboarding-boilerplate</a>.
 dev_addr: 0.0.0.0:8001
 
 nav:

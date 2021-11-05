@@ -5,7 +5,7 @@ import sys
 
 
 def main():
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "piedpiper.config")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "apps.config")
     os.environ.setdefault("DJANGO_CONFIGURATION", "Local")
 
     try:

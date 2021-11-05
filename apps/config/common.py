@@ -23,7 +23,7 @@ class Common(Configuration):
         'django_filters',            # for filtering rest endpoints
 
         # Your apps
-        'piedpiper.users',
+        'apps.users',
 
     )
 
@@ -39,15 +39,15 @@ class Common(Configuration):
     )
 
     ALLOWED_HOSTS = ["*"]
-    ROOT_URLCONF = 'piedpiper.urls'
+    ROOT_URLCONF = 'apps.urls'
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
-    WSGI_APPLICATION = 'piedpiper.wsgi.application'
+    WSGI_APPLICATION = 'apps.wsgi.application'
 
     # Email
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
     ADMINS = (
-        ('Author', 'richard.hendriks@piedpiper.com'),
+        ('Author', 'nevvjann@gmail.com'),
     )
 
     # Postgres
