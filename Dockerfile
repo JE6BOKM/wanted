@@ -1,15 +1,27 @@
-FROM python:3.8
+FROM python:3.9 as requirements-stage
+
+WORKDIR /tmp
+
+RUN pip install poetry
+
+COPY ./pyproject.toml ./poetry.lock* /tmp/
+
+RUN poetry export -f requirements.txt --output requirements.txt --without-hashes --dev
+
+
+FROM python:3.9
 ENV PYTHONUNBUFFERED 1
 
-# Allows docker to cache installed dependencies between builds
-COPY ./requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+COPY --from=requirements-stage /tmp/requirements.txt /requirements.txt
+
+
+RUN pip install --no-cache-dir --upgrade -r /requirements.txt
 
 # Adds our application code to the image
-COPY . code
-WORKDIR code
+COPY . /code
+WORKDIR /code
 
 EXPOSE 8000
 
 # Run the production server
-CMD newrelic-admin run-program gunicorn --bind 0.0.0.0:$PORT --access-logfile - apps.wsgi:application
+CMD newrelic-admin run-program gunicorn --bind 0.0.0.0:$PORT --access-logfile - config.wsgi:application
