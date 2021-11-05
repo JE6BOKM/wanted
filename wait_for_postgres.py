@@ -8,10 +8,10 @@ check_timeout = os.getenv("POSTGRES_CHECK_TIMEOUT", 30)
 check_interval = os.getenv("POSTGRES_CHECK_INTERVAL", 1)
 interval_unit = "second" if check_interval == 1 else "seconds"
 config = {
-    "dbname": os.getenv("POSTGRES_DB", "postgres"),
-    "user": os.getenv("POSTGRES_USER", "postgres"),
-    "password": os.getenv("POSTGRES_PASSWORD", ""),
-    "host": os.getenv("DATABASE_URL", "postgres"),
+    "dbname": os.getenv("POSTGRES_DB", "crud"),
+    "user": os.getenv("POSTGRES_USER", "localuser"),
+    "password": os.getenv("POSTGRES_PASSWORD", "password"),
+    "host": os.getenv("DATABASE_HOST", "postgres"),
 }
 
 start_time = time()
@@ -27,7 +27,8 @@ def pg_isready(host, user, password, dbname):
             logger.info("Postgres is ready! ✨ 💅")
             conn.close()
             return True
-        except psycopg2.OperationalError:
+        except psycopg2.OperationalError as e:
+            print(e)
             logger.info(
                 f"Postgres isn't ready. Waiting for {check_interval} {interval_unit}..."
             )
