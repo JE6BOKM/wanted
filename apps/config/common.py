@@ -23,6 +23,7 @@ class Common(Configuration):
         "django_filters",  # for filtering rest endpoints
         # Your apps
         "apps.users",
+        "apps.core",
     )
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
@@ -81,20 +82,38 @@ class Common(Configuration):
     MEDIA_ROOT = join(os.path.dirname(BASE_DIR), "media")
     MEDIA_URL = "/media/"
 
+    # TEMPLATES
+    # ------------------------------------------------------------------------------
+    # https://docs.djangoproject.com/en/dev/ref/settings/#templates
+
     TEMPLATES = [
         {
+            # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-TEMPLATES-BACKEND
             "BACKEND": "django.template.backends.django.DjangoTemplates",
+            # https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
             "DIRS": STATICFILES_DIRS,
-            "APP_DIRS": True,
             "OPTIONS": {
+                # https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
+                # https://docs.djangoproject.com/en/dev/ref/templates/api/#loader-types
+                "loaders": [
+                    "django.template.loaders.filesystem.Loader",
+                    "django.template.loaders.app_directories.Loader",
+                ],
+                # https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors
                 "context_processors": [
                     "django.template.context_processors.debug",
                     "django.template.context_processors.request",
                     "django.contrib.auth.context_processors.auth",
+                    "django.template.context_processors.i18n",
+                    "django.template.context_processors.media",
+                    "django.template.context_processors.static",
+                    "django.template.context_processors.tz",
                     "django.contrib.messages.context_processors.messages",
+                    "django_admin_env_notice.context_processors.from_settings",
+                    "apps.utils.context_processors.settings_context",
                 ],
             },
-        },
+        }
     ]
 
     # Set DEBUG to False as a default for safety
