@@ -25,7 +25,7 @@
     - 완료된 시스템이 배포된 서버의 주소
     - Swagger를 통한 API 테스트할때 필요한 상세 방법
     - 해당 과제를 진행하면서 회고 내용 블로그 포스팅
-  
+
 ### [개발 요구사항]
 - Swagger나 Postman을 이용하여 API 테스트 가능하도록 구현
     - Swagger 대신 Postman 이용시 API 목록을 Export하여 함께 제출해 주세요
@@ -59,21 +59,21 @@
         - Authorization 키의 값이 없거나 인증 실패시 적절한 Error Handling을 해주세요.
         - 상품 추가/수정/삭제는 admin 권한을 가진 사용자만 이용할 수 있습니다.
     - 시용자 인증 / 인가
-        
+
         ```
         사전 등록된 사용자는 총 2명입니다.
-        
+
         - 사용자 1번
         	EMAIL: user@freshcode.me
         	PASSWORD: user
           ROLE : [user]
-        
+
         - 사용자 2번
         	EMAIL: admin@freshcode.me
         	PASSWORD: admin
           ROLE : [admin]
         ```
-            
+
 
 ### 상품 관리 기능
 - 아래 상품 JSON 구조를 이용하여 데이터베이스 및 API를 개발해주세요.
@@ -85,7 +85,7 @@
         - 관리자는 상품 추가/수정/삭제를 할 수 있습니다.
         - 상품 관리 API 개발시 적절한 Error Handling을 해주세요.
     - 상품 구조
-        
+
         ```json
         // JSON DATA Structure
         {
@@ -118,7 +118,7 @@
             }
           ]
         }
-        
+
         ```
 
 ## API TEST 방법
@@ -128,7 +128,7 @@
 ###  Local 개발 및 테스트용
 ...
 
-###  배포용 
+###  배포용
 ...
 
 ## 폴더 구조

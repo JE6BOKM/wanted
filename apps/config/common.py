@@ -148,8 +148,6 @@ class Common(Configuration):
                     "django.template.context_processors.static",
                     "django.template.context_processors.tz",
                     "django.contrib.messages.context_processors.messages",
-                    "django_admin_env_notice.context_processors.from_settings",
-                    "apps.utils.context_processors.settings_context",
                 ],
             },
         }
