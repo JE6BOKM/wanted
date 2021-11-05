@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from distutils.util import strtobool
 from os.path import join
 
@@ -21,10 +22,48 @@ class Common(Configuration):
         "rest_framework",  # utilities for rest apis
         "rest_framework.authtoken",  # token authentication
         "django_filters",  # for filtering rest endpoints
+        # dj-rest-auth
+        "dj_rest_auth",  # for authentication
+        # "rest_framework_simplejwt.token_blacklist",
+        "dj_rest_auth.registration",
+        # django-alauth
+        "django.contrib.sites",
+        "allauth",
+        "allauth.account",
+        "allauth.socialaccount",
         # Your apps
         "apps.users",
         "apps.core",
     )
+
+    # django-alauth
+    # ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+    ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_UNIQUE_EMAIL = True
+    ACCOUNT_USERNAME_REQUIRED = True
+    ACCOUNT_AUTHENTICATION_METHOD = "email"
+    ACCOUNT_EMAIL_VERIFICATION = "none"
+
+    # https://stackoverflow.com/questions/41719312/django-rest-auth-authentication-not-working
+    AUTHENTICATION_BACKENDS = (
+        "django.contrib.auth.backends.ModelBackend",
+        "allauth.account.auth_backends.AuthenticationBackend",
+    )
+
+    REST_USE_JWT = True
+
+    SIMPLE_JWT = {
+        "ACCESS_TOKEN_LIFETIME": timedelta(days=2),
+        "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+        "ROTATE_REFRESH_TOKENS": False,
+        "BLACKLIST_AFTER_ROTATION": True,
+    }
+
+    # dj-rest-auth
+    SITE_ID = 1
+    REST_AUTH_SERIALIZERS = {
+        "USER_DETAILS_SERIALIZER": "apps.users.serializers.UserSerializer",
+    }
 
     # https://docs.djangoproject.com/en/2.0/topics/http/middleware/
     MIDDLEWARE = (
