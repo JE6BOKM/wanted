@@ -1,0 +1,10 @@
+# Postgres 환경변수 설정 가능
+# ------------------------------------------------------------------------------
+POSTGRES_DB=crud
+POSTGRES_USER=localuser
+POSTGRES_PASSWORD=password
+
+# Postgres 환경변수 설정 불가
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432

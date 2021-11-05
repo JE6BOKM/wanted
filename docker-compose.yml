@@ -1,7 +1,23 @@
 version: '3'
+
+volumes:
+  local_postgres_data: {}
+  local_postgres_data_backups: {}
+
+
 services:
   postgres:
-    image: postgres:11.6
+    restart: always
+    image: postgres:13.1
+    container_name: postgres
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data:Z
+      - local_postgres_data_backups:/backups:z
+    env_file:
+      - ./.envs/.postgres
+    ports:
+      - "5432:5432"
+
   web:
     restart: always
     environment:
@@ -17,6 +33,7 @@ services:
       - "8000:8000"
     depends_on:
       - postgres
+
   documentation:
     restart: always
     build: ./
