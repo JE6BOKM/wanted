@@ -34,6 +34,7 @@ class Common(Configuration):
         # Your apps
         "apps.users",
         "apps.core",
+        "apps.company_info",
     )
 
     # django-alauth
