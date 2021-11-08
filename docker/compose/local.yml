@@ -1,0 +1,48 @@
+version: '3'
+
+volumes:
+  local_postgres_data: {}
+  local_postgres_data_backups: {}
+
+
+services:
+  postgres:
+    restart: always
+    image: postgres:13.1
+    container_name: postgres
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data:Z
+      - local_postgres_data_backups:/backups:z
+    env_file:
+      - ../../.envs/.local.postgres
+    ports:
+      - "5432:5432"
+
+  django:
+    restart: always
+    environment:
+      - DJANGO_SECRET_KEY=local
+      - DJANGO_CONFIGURATION=Local
+    build:
+      context: ../../
+      dockerfile: docker/images/local/Django.Dockerfile
+    container_name: django
+    volumes:
+      - ../../:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    command:
+      - /start
+
+  documentation:
+    restart: always
+    build:
+      context: ../../
+      dockerfile: docker/images/local/Django.Dockerfile
+    command: "mkdocs serve"
+    volumes:
+      - ../../:/code
+    ports:
+      - "8001:8001"
