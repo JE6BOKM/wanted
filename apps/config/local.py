@@ -20,3 +20,8 @@ class Local(Common):
     EMAIL_HOST = "localhost"
     EMAIL_PORT = 1025
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+    REST_FRAMEWORK = Common.REST_FRAMEWORK
+    REST_FRAMEWORK["DEFAULT_AUTHENTICATION_CLASSES"] = [  # noqa
+        "apps.core.authentications.AutoLoginAuthentication",
+    ]
