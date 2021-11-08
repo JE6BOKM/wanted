@@ -14,31 +14,35 @@ services:
       - local_postgres_data:/var/lib/postgresql/data:Z
       - local_postgres_data_backups:/backups:z
     env_file:
-      - ./.envs/.postgres
+      - ../../.envs/.local.postgres
     ports:
       - "5432:5432"
 
-  web:
+  django:
     restart: always
     environment:
       - DJANGO_SECRET_KEY=local
-    build: ./
-    command: >
-      bash -c "python wait_for_postgres.py &&
-               ./manage.py migrate &&
-               ./manage.py runserver 0.0.0.0:8000"
+      - DJANGO_CONFIGURATION=Local
+    build:
+      context: ../../
+      dockerfile: docker/images/local/Django.Dockerfile
+    container_name: django
     volumes:
-      - ./:/code
+      - ../../:/code
     ports:
       - "8000:8000"
     depends_on:
       - postgres
+    command:
+      - /start
 
   documentation:
     restart: always
-    build: ./
+    build:
+      context: ../../
+      dockerfile: docker/images/local/Django.Dockerfile
     command: "mkdocs serve"
     volumes:
-      - ./:/code
+      - ../../:/code
     ports:
       - "8001:8001"
