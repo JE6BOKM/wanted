@@ -11,16 +11,20 @@ from apps.company_info.serializers import CompanyDetailSerializer
 class CompanyNameDetailView(APIView):
     def get(self, request, name):
         language = request.META.get("HTTP_X_WANTED_LANGUAGE")
-        company_name = CompanyName.objects.get(name=name)
-        if not company_name:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-        company = CompanyName.objects.prefetch_related(
-            Prefetch(
-                "c_id__tags",
-                queryset=Tag.objects.filter(language__name=language),
+        try:
+            CompanyName.objects.get(name=name)
+            company = CompanyName.objects.prefetch_related(
+                Prefetch(
+                    "c_id__tags",
+                    queryset=Tag.objects.filter(language__name=language),
+                )
             )
-        )
-        company = company.get(language__name=language, name=name)
+            company = company.get(language__name=language, name=name)
+        except CompanyName.DoesNotExist:
+            return Response(
+                data={"error": f"{name} is Not Exist."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
 
         serializer = CompanyDetailSerializer(company)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
