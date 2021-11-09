@@ -1,11 +1,6 @@
-from django.db.models.base import Model
-from rest_framework.serializers import (
-    CharField,
-    ModelSerializer,
-    StringRelatedField,
-)
+from rest_framework.serializers import CharField, ModelSerializer, StringRelatedField
 
-from apps.company_info.models import Company, CompanyName, Tag
+from apps.company_info.models import Company, CompanyName
 
 
 class CompanyListSerializer(ModelSerializer):

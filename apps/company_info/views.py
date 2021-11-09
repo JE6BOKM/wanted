@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from apps.company_info.models import CompanyName, Tag, Language
+from apps.company_info.models import CompanyName, Language, Tag
 from apps.company_info.serializers import (
     CompanyCreateSerializer,
     CompanyDetailSerializer,
