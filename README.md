@@ -1,138 +1,277 @@
-# 프레시코드
-- 과제 출제 기업 정보
-  - 기업명 : 프레시코드
-  - [프레시코드](https://freshcode.com/)
-  - [wanted 채용공고 링크](https://www.wanted.co.kr/company/4865)
+# 원티드랩
+
+-   과제 출제 기업 정보
+    -   기업명 : 원티드랩
+    -   [원티드](https://www.wanted.co.kr/)
+    -   [wanted 채용공고 링크](https://www.wanted.co.kr/company/79)
 
 ## 💁‍♀️ Members
-|이름   |github                   |담당 기능|
-|-------|-------------------------|--------------------|
-|신재민 |[shinjam](https://github.com/shinjam)     | 테스트 코드   |
-|신우주 |[shinwooju](https://github.com/shinwooju)     | 상품 CRUD   |
-|최혜림 |[rimi0108](https://github.com/rimi0108)     | 로그인   |
-|강성묵 |[miranaky](https://github.com/miranaky)     | 로그인   |
-|김민규 |[miranaky](https://github.com/SkyStar-K)     | 상품 CRUD  |
 
+| 이름   | github                                    | 담당 기능            |
+| ------ | ----------------------------------------- | -------------------- |
+| 신재민 | [shinjam](https://github.com/shinjam)     | Test코드 적용, 배포  |
+| 신우주 | [shinwooju](https://github.com/shinwooju) | 회사 이름으로 검색        |
+| 최혜림 | [rimi0108](https://github.com/rimi0108)   | 데이터변환 및 업로드 |
+| 강성묵 | [miranaky](https://github.com/miranaky)   | 전체 총괄            |
+| 김민규 | [SkyStar-K](https://github.com/SkyStar-K)  | 회사 생성            |
 
 ## ⭐ 과제 내용
 
+---
+
 ### [필수 포함 사항]
-- Swagger나 Postman을 이용하여 API 테스트 가능하도록 구현
-    - Swagger 대신 Postman 이용시 API 목록을 Export하여 함께 제출해 주세요
-- READ.ME 작성
-    - 프로젝트 빌드, 자세한 실행 방법 명시
-    - 구현 방법과 이유에 대한 간략한 설명
-    - 완료된 시스템이 배포된 서버의 주소
-    - Swagger를 통한 API 테스트할때 필요한 상세 방법
-    - 해당 과제를 진행하면서 회고 내용 블로그 포스팅
+
+-   READ.ME 작성
+    -   프로젝트 빌드, 자세한 실행 방법 명시
+    -   구현 방법과 이유에 대한 간략한 설명
+    -   완료된 시스템이 배포된 서버의 주소
+    -   Swagger나 Postman을 통한 API 테스트할때 필요한 상세 방법
+    -   해당 과제를 진행하면서 회고 내용 블로그 포스팅
+-   Swagger나 Postman을 이용하여 API 테스트 가능하도록 구현
+
+---
 
 ### [개발 요구사항]
-- Swagger나 Postman을 이용하여 API 테스트 가능하도록 구현
-    - Swagger 대신 Postman 이용시 API 목록을 Export하여 함께 제출해 주세요
-- READ.ME 작성
-    - 프로젝트 빌드, 자세한 실행 방법 명시
-    - 구현 방법과 이유에 대한 간략한 설명
-    - 완료된 시스템이 배포된 서버의 주소
-    - Swagger를 통한 API 테스트할때 필요한 상세 방법
-    - 해당 과제를 진행하면서 회고 내용 블로그 포스팅
 
+✔️ **데이터**
+
+---
+
+-   회사 정보
+    -   회사 이름 (다국어 지원 가능)
+-   회사 정보 예제
+    -   회사 이름 (원티드랩 / Wantedlab)
+-   데이터 셋은 원티드에서 제공
+-   데이터셋 예제
+
+        -   원티드랩 회사는 한국어, 영어 회사명을 가지고 있습니다. (모든 회사가 모든 언어의 회사명을 가지고 있지는 않습니다.)
+
+    ✔️ **REST API 기능**
+
+---
+
+-   회사명 자동완성
+    -   회사명의 일부만 들어가도 검색이 되어야 합니다.
+-   회사 이름으로 회사 검색
+-   새로운 회사 추가
+
+**✔️ 개발 조건**
+
+---
+
+-   제공되는 test case를 통과할 수 있도록 개발해야 합니다.
+    [test_app.py](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0d2517b3-b80b-4a1b-82c4-9bc6f2a0d5ae/test_app.py)
+-   ORM 사용해야 합니다.
+-   결과는 JSON 형식이어야 합니다.
+-   database는 RDB를 사용해야 합니다.
+-   database table 갯수는 제한없습니다.
+-   필요한 조건이 있다면 추가하셔도 좋습니다.
+-   Docker로 개발하면 가산점이 있습니다.
+
+---
+
+---
 
 ## 사용 기술 및 tools
-> - Back-End :  <img src="https://img.shields.io/badge/Python 3.8-3776AB?style=for-the-badge&logo=Python&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Django 3.2-092E20?style=for-the-badge&logo=Django&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/mysql 8.0-1b9e41?style=for-the-badge&logo=Mysql&logoColor=white"/>
-> - Deploy : <img src="https://img.shields.io/badge/AWS_EC2-232F3E?style=for-the-badge&logo=Amazon&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Docker-0052CC?style=for-the-badge&logo=Docker&logoColor=white"/>
-> - ETC :  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=Github&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"/>
+
+> -   Back-End : <img src="https://img.shields.io/badge/Python 3.8-3776AB?style=for-the-badge&logo=Python&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Django 3.2-092E20?style=for-the-badge&logo=Django&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=PostgreSQL&logoColor=white"/>
+> -   Deploy : <img src="https://img.shields.io/badge/AWS_EC2-232F3E?style=for-the-badge&logo=Amazon&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Docker-0052CC?style=for-the-badge&logo=Docker&logoColor=white"/>
+> -   ETC : <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=Github&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"/>
+
+---
+
+---
 
 ## 🏄‍♀️ 모델링
-![5 drawio](https://user-images.githubusercontent.com/8315252/139969615-38f01f08-cc1c-427e-87a6-09671525525b.png)
+
+![image](https://user-images.githubusercontent.com/79964569/140952581-2c215f7f-a93d-49f7-8bf6-c438ffa6536a.png)
+
+---
+
+---
 
 ## API
+
 [링크-postman document](https://documenter.getpostman.com/view/16042359/UVBzmpLX)
+
+---
+
+---
 
 ## 구현 기능
 
-### 로그인 기능
-- 사용자 인증을 통해 상품 관리를 할 수 있어야 합니다.
-    - 구현
-        - JWT 인증 방식을 이용합니다.
-        - 서비스 실행시 데이터베이스 또는 In Memory 상에 유저를 미리 등록해주세요.
-        - Request시 Header에 Authorization 키를 체크합니다.
-        - Authorization 키의 값이 없거나 인증 실패시 적절한 Error Handling을 해주세요.
-        - 상품 추가/수정/삭제는 admin 권한을 가진 사용자만 이용할 수 있습니다.
-    - 시용자 인증 / 인가
+</br>
 
-        ```
-        사전 등록된 사용자는 총 2명입니다.
+### 회사명 자동완성
 
-        - 사용자 1번
-        	EMAIL: user@freshcode.me
-        	PASSWORD: user
-          ROLE : [user]
+-   회사명의 일부만 들어가도 검색이 되어야 합니다.
 
-        - 사용자 2번
-        	EMAIL: admin@freshcode.me
-        	PASSWORD: admin
-          ROLE : [admin]
+    -   구현
+        -   여기에다가 뭐뭐사용했는지 써주세요
         ```
 
+        ```
 
-### 상품 관리 기능
-- 아래 상품 JSON 구조를 이용하여 데이터베이스 및 API를 개발해주세요.
-    - 구현
-        - 서비스 실행시 데이터베이스 또는 In Memory 상에 상품 최소한 5개를 미리 생성해주세요.
-        - 상품 조회는 하나 또는 전체목록을 조회할 수 있으며, 전체목록은 페이징 기능이 있습니다.
-            - 한 페이지 당 아이템 수는 5개 입니다.
-        - 사용자는 상품 조회만 가능합니다.
-        - 관리자는 상품 추가/수정/삭제를 할 수 있습니다.
-        - 상품 관리 API 개발시 적절한 Error Handling을 해주세요.
-    - 상품 구조
+-   header의 x-wanted-language 언어값에 따라 해당 언어로 출력되어야 합니다. - 구현 - header의 Key값에 x-wanted-language, Value값에 'ko', 'en','ja','tw' 등을 이용하여 필터링 해야합니다.
+    ` `
+    </br>
+
+### 회사이름으로 회사검색
+
+-   구현
+    ```
+    {
+        "company_name": "infobank",
+        "tags": [
+            "tag_1",
+            "tag_2"
+        ]
+    }
+    ```
+-   header의 x-wanted-language 언어값에 따라 해당 언어로 출력되어야 합니다.
+
+    -   구현
+        -   header의 Key값에 x-wanted-language, Value값에 'ko', 'en','ja','tw' 등을 이용하여 필터링 해야합니다.
+        ```
+        {
+            "company_name": "인포뱅크",
+            "tags": [
+                "태그_1",
+                "태그_2"
+            ]
+        },
+        {
+            "company_name": "infobank",
+            "tags": [
+                "tag_1",
+                "tag_2"
+            ]
+        }
+        ```
+
+-   검색된 회사가 없는경우 404를 리턴합니다.
+    -   구현
+        ```
+        {
+            "error": "없는회사 is Not Exist."
+        }
+        ```
+
+### 새로운 회사 추가
+
+-   새로운 언어(tw)도 같이 추가 될 수 있습니다.
+-   저장 완료후 header의 x-wanted-language 언어값에 따라 해당 언어로 출력되어야 합니다.
+
+    -   구현
 
         ```json
         // JSON DATA Structure
-        {
-          menus: [
-            {
-              id: 245,
-              category: "SALAD",
-              name: "깔라마리 달래 샐러드",
-              description: "해산물 샐러드",
-              isSold: false,
-              badge: "NEW",
-              items: [
-                {
-                  id: 1,
-                  menuId: 245,
-                  name: "미디움",
-                  size: "M",
-                  price: 8000,
-                  isSold: false,
-                },
-              ],
-              tags: [
-                {
-                  id: 1,
-                  menuId: 245,
-                  type: "vegetarianism",
-                  name: "페스코베지테리언"
-                }
-              ],
-            }
-          ]
-        }
-
         ```
 
-## API TEST 방법
-...
-
 ## 설치 및 실행 방법
-###  Local 개발 및 테스트용
+
+</br>
+
+### Local 개발 및 테스트용
+
 ...
 
-###  배포용
+### 배포용
+
 ...
 
 ## 폴더 구조
 
+```
+.
+├── Makefile
+├── README.md
+├── apps
+│   ├── __init__.py
+│   ├── company_info
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── serializers.py
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   ├── config
+│   │   ├── __init__.py
+│   │   ├── common.py
+│   │   ├── local.py
+│   │   ├── production.py
+│   │   └── test.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   ├── authentications.py
+│   │   ├── management
+│   │   │   └── commands
+│   │   │       └── dummy.py
+│   │   ├── migrations
+│   │   │   └── __init__.py
+│   │   └── serializers.py
+│   ├── urls.py
+│   ├── users
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── permissions.py
+│   │   ├── serializers.py
+│   │   ├── tests
+│   │   │   ├── __init__.py
+│   │   │   └── test_viewsets.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   └── wsgi.py
+├── conftest.py
+├── db_uploader.py
+├── docker
+│   ├── compose
+│   │   ├── local.yml
+│   │   └── prod.yml
+│   └── images
+│       ├── local
+│       │   ├── Django.Dockerfile
+│       │   └── start
+│       └── prod
+│           ├── Django.Dockerfile
+│           └── start
+├── docs
+│   ├── api
+│   │   ├── authentication.md
+│   │   └── users.md
+│   └── index.md
+├── manage.py
+├── mkdocs.yml
+├── poetry.lock
+├── pyproject.toml
+├── pytest.ini
+├── setup.cfg
+├── test
+│   ├── __init__.py
+│   ├── factories
+│   │   ├── __init__.py
+│   │   └── users.py
+│   └── schema
+│       ├── __init__.py
+│       └── users.py
+└── wait_for_postgres.py
+```
+
+---
+
+---
 
 # Reference
-이 프로젝트는 원티드x위코드 백엔드 프리온보딩 과제 일환으로 **에서 출제한 과제를 기반으로 만들었습니다.
+
+이 프로젝트는 원티드x위코드 백엔드 프리온보딩 과제 일환으로 \*\*에서 출제한 과제를 기반으로 만들었습니다.
