@@ -14,7 +14,7 @@ api_v1_urls += [
     path("users/", include("apps.users.urls")),
     path("accounts/", include("dj_rest_auth.urls")),
     path("accounts/", include("dj_rest_auth.registration.urls")),
-    path("", include("apps.company_info.url")),
+    path("", include("apps.company_info.urls")),
 ]
 
 

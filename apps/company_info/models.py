@@ -21,16 +21,34 @@ class Tag(models.Model):
         db_table = "tags"
 
     def __str__(self):
-        return self.name
+        return str(self.name)
+
+
+class CompanyName(models.Model):
+    name = models.CharField(max_length=50)
+    language = models.ForeignKey(
+        "Language",
+        on_delete=models.CASCADE,
+        related_name="company_name",
+    )
+    c_id = models.ForeignKey(
+        "Company", on_delete=models.CASCADE, related_name="company_name"
+    )
+
+    class Meta:
+        db_table = "company_names"
+
+    def __str__(self):
+        return str(self.name)
 
 
 class Company(models.Model):
-    name = models.CharField(max_length=50)
-    tag = models.ManyToManyField("Tag", related_name="companies")
-    language = models.ForeignKey("Language", on_delete=models.CASCADE)
+    tags = models.ManyToManyField("Tag", related_name="companies")
 
     class Meta:
         db_table = "companies"
+        verbose_name = "Company"
+        verbose_name_plural = "Companies"
 
     def __str__(self):
-        return self.name
+        return str(self.id)
