@@ -1,6 +1,6 @@
 from rest_framework.serializers import CharField, ModelSerializer, StringRelatedField
 
-from apps.company_info.models import CompanyName
+from apps.company_info.models import Company, CompanyName
 
 
 class CompanyListSerializer(ModelSerializer):
@@ -18,3 +18,15 @@ class CompanyDetailSerializer(ModelSerializer):
     class Meta:
         model = CompanyName
         fields = ("company_name", "tags")
+
+
+class CompanyNameCreateSerializer(ModelSerializer):
+    class Meta:
+        model = CompanyName
+        fields = ("name", "language", "c_id")
+
+
+class CompanyCreateSerializer(ModelSerializer):
+    class Meta:
+        model = Company
+        fields = ("tags",)
