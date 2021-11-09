@@ -219,10 +219,7 @@ cover/
 *.pot
 
 # Django stuff:
-<<<<<<< HEAD
-=======
 static/
->>>>>>> 149b156d2f4c133c30e95079f29fe66fe4aab62a
 *.log
 local_settings.py
 db.sqlite3
