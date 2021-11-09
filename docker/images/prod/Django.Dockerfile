@@ -23,7 +23,7 @@ RUN pip install --no-cache-dir --upgrade -r /requirements.txt
 COPY . /code
 WORKDIR /code
 
-COPY --chown=django:django ./docker/images/local/start /start
+COPY ./docker/images/prod/start /start
 RUN chmod +x /start
 
 

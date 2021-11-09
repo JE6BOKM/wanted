@@ -219,6 +219,7 @@ cover/
 *.pot
 
 # Django stuff:
+static/
 *.log
 local_settings.py
 db.sqlite3
@@ -265,6 +266,8 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+.envs/*
+!.envs/.local.*
 .env
 .envrc
 .venv
