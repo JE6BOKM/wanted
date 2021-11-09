@@ -92,7 +92,7 @@
 
 ## API
 
-[링크-postman document](https://documenter.getpostman.com/view/16042359/UVBzmpLX)
+[링크-postman document](https://documenter.getpostman.com/view/13670333/UVC5F7t1)
 
 ---
 
