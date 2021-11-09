@@ -13,7 +13,7 @@
 | 신우주 | [shinwooju](https://github.com/shinwooju) | 회사 이름으로 검색        |
 | 최혜림 | [rimi0108](https://github.com/rimi0108)   | 데이터변환 및 업로드 |
 | 강성묵 | [miranaky](https://github.com/miranaky)   | 전체 총괄            |
-| 김민규 | [miranaky](https://github.com/SkyStar-K)  | 회사 생성            |
+| 김민규 | [SkyStar-K](https://github.com/SkyStar-K)  | 회사 생성            |
 
 ## ⭐ 과제 내용
 
