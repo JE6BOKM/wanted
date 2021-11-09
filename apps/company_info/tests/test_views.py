@@ -1,10 +1,10 @@
-import json
-
 import pytest
+
+pytestmark = pytest.mark.django_db
 
 
 @pytest.fixture
-def api(no_auth_client):
+def api(no_auth_client, company_info_data):
     return no_auth_client
 
 
@@ -14,8 +14,11 @@ def test_company_name_autocomplete(api):
     회사명의 일부만 들어가도 검색이 되어야 합니다.
     header의 x-wanted-language 언어값에 따라 해당 언어로 출력되어야 합니다.
     """
-    resp = api.get("/search?query=링크", headers=[("x-wanted-language", "ko")])
-    searched_companies = json.loads(resp.data.decode("utf-8"))
+    # resp = api.get("/search?query=링크", headers=[("x-wanted-language", "ko")])
+    resp = api.get("/search?query=링크", HTTP_X_WANTED_LANGUAGE="ko")
+
+    # searched_companies = json.loads(resp.data.decode("utf-8"))
+    searched_companies = resp.json()
 
     assert resp.status_code == 200
     assert searched_companies == [
@@ -29,9 +32,12 @@ def test_company_search(api):
     2. 회사 이름으로 회사 검색
     header의 x-wanted-language 언어값에 따라 해당 언어로 출력되어야 합니다.
     """
-    resp = api.get("/companies/Wantedlab", headers=[("x-wanted-language", "ko")])
+    # resp = api.get("/companies/Wantedlab", headers=[("x-wanted-language", "ko")])
+    resp = api.get("/companies/Wantedlab", HTTP_X_WANTED_LANGUAGE="ko")
 
-    company = json.loads(resp.data.decode("utf-8"))
+    # company = json.loads(resp.data.decode("utf-8"))
+    company = resp.json()
+
     assert resp.status_code == 200
     assert company == {
         "company_name": "원티드랩",
@@ -43,7 +49,8 @@ def test_company_search(api):
     }
 
     # 검색된 회사가 없는경우 404를 리턴합니다.
-    resp = api.get("/companies/없는회사", headers=[("x-wanted-language", "ko")])
+    # resp = api.get("/companies/없는회사", headers=[("x-wanted-language", "ko")])
+    resp = api.get("/companies/없는회사", HTTP_X_WANTED_LANGUAGE="ko")
 
     assert resp.status_code == 404
 
@@ -54,9 +61,43 @@ def test_new_company(api):
     새로운 언어(tw)도 같이 추가 될 수 있습니다.
     저장 완료후 header의 x-wanted-language 언어값에 따라 해당 언어로 출력되어야 합니다.
     """
+    # resp = api.post(
+    #     "/companies",
+    #     json={
+    #         "company_name": {
+    #             "ko": "라인 프레쉬",
+    #             "tw": "LINE FRESH",
+    #             "en": "LINE FRESH",
+    #         },
+    #         "tags": [
+    #             {
+    #                 "tag_name": {
+    #                     "ko": "태그_1",
+    #                     "tw": "tag_1",
+    #                     "en": "tag_1",
+    #                 }
+    #             },
+    #             {
+    #                 "tag_name": {
+    #                     "ko": "태그_8",
+    #                     "tw": "tag_8",
+    #                     "en": "tag_8",
+    #                 }
+    #             },
+    #             {
+    #                 "tag_name": {
+    #                     "ko": "태그_15",
+    #                     "tw": "tag_15",
+    #                     "en": "tag_15",
+    #                 }
+    #             },
+    #         ],
+    #     },
+    #     headers=[("x-wanted-language", "tw")],
+    # )
     resp = api.post(
         "/companies",
-        json={
+        data={
             "company_name": {
                 "ko": "라인 프레쉬",
                 "tw": "LINE FRESH",
@@ -86,10 +127,13 @@ def test_new_company(api):
                 },
             ],
         },
-        headers=[("x-wanted-language", "tw")],
+        HTTP_X_WANTED_LANGUAGE="tw",
+        format="json",
     )
 
-    company = json.loads(resp.data.decode("utf-8"))
+    # company = json.loads(resp.data.decode("utf-8"))
+    company = resp.json()
+
     assert company == {
         "company_name": "LINE FRESH",
         "tags": [

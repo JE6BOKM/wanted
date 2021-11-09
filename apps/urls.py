@@ -20,7 +20,7 @@ api_v1_urls += [
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/v1/", include(api_v1_urls)),
+    path("", include(api_v1_urls)),
     # the 'api-root' from django rest-frameworks default router
     # http://www.django-rest-framework.org/api-guide/routers/#defaultrouter
     re_path(
