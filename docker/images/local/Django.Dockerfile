@@ -20,7 +20,7 @@ COPY --from=requirements-stage /tmp/requirements.txt /requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /requirements.txt
 
 # Adds our application code to the image
-# COPY . /code
+COPY . /code
 WORKDIR /code
 
 COPY ./docker/images/local/start /start
