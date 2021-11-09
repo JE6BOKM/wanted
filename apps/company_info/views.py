@@ -6,6 +6,13 @@ from apps.company_info.models import CompanyName
 from apps.company_info.serializers import CompanyListSerializer
 
 
+class CompanyCreateView(APIView):
+    """Company Create View"""
+
+    def post(self, request):
+        pass
+
+
 class CompanySearchView(APIView):
     def get(self, request):
         name = request.GET.get("query", None)
