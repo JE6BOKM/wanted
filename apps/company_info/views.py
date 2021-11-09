@@ -29,7 +29,7 @@ class CompanyNameDetailView(APIView):
         serializer = CompanyDetailSerializer(company)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
-      
+
 class CompanySearchView(APIView):
     """Company search view with query"""
 
