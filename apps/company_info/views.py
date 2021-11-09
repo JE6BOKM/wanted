@@ -30,9 +30,7 @@ class CompanyCreateView(APIView):
             for language, tag_name in tags.get("tag_name").items():
                 try:
                     language_obj = Language.objects.get(name=language)
-                    tag_obj = Tag.objects.get(
-                        name=tag_name, language=language_obj
-                    )
+                    tag_obj = Tag.objects.get(name=tag_name, language=language_obj)
                     self._tag_object_list.append(tag_obj.id)
                 except Tag.DoesNotExist:
                     tag_data = {"name": tag_name, "language": language_obj}
@@ -99,9 +97,7 @@ class CompanyCreateView(APIView):
                 )
                 result_company = result_company.get(id=result)
                 result_serializer = CompanyDetailSerializer(result_company)
-                return Response(
-                    data=result_serializer.data, status=status.HTTP_200_OK
-                )
+                return Response(data=result_serializer.data, status=status.HTTP_200_OK)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
