@@ -52,3 +52,9 @@ class Test(Common):
     # ------------------------------------------------------------------------------
     # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
     EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
+
+    REST_FRAMEWORK = Common.REST_FRAMEWORK
+    REST_FRAMEWORK["DEFAULT_AUTHENTICATION_CLASSES"] = [  # noqa
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ]
