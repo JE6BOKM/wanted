@@ -30,7 +30,7 @@ class CompanyCreateView(APIView):
             for language, tag_name in tags.get("tag_name").items():
                 try:
                     language_obj = Language.objects.get(name=language)
-                    tag_obj = Tag.objects.get(name=tag_name, language=language_obj)
+                    tag_obj = Tag.objects.get(name=tag_name, language__name=language)
                     self._tag_object_list.append(tag_obj.id)
                 except Tag.DoesNotExist:
                     tag_data = {"name": tag_name, "language": language_obj}
@@ -43,19 +43,20 @@ class CompanyCreateView(APIView):
         company_serializer = CompanyCreateSerializer(data=company_data)
         if company_serializer.is_valid():
             # company name create
-            company = company_serializer.save()
-            return company
+            self._company = company_serializer.save()
 
-    def generate_company_name_data(self, language_name, company_name, company):
+    def generate_company_name_data(self, language_name, company_name):
+
         try:
             language = Language.objects.get(name=language_name)
         except Language.DoesNotExist:
+            self._company.delete()
             return Response(status=status.HTTP_400_BAD_REQUEST)
         else:
             company_name_data = {
                 "name": company_name,
                 "language": language.id,
-                "c_id": company.id,
+                "c_id": self._company.id,
             }
             return company_name_data
 
@@ -72,6 +73,17 @@ class CompanyCreateView(APIView):
         company_name_list = request.data.get("company_name")
         tag_list = request.data.get("tags")
         language_list = company_name_list.keys()
+        for lan_name, comp_name in company_name_list.items():
+            if (
+                len(
+                    CompanyName.objects.filter(
+                        name=comp_name,
+                        language__name=lan_name,
+                    )
+                )
+                > 0
+            ):
+                return Response(status=status.HTTP_400_BAD_REQUEST)
 
         # check language exist or create
         self.language_exist_or_create(language_list)
@@ -80,13 +92,14 @@ class CompanyCreateView(APIView):
         # company create
         company_data = {"tags": self._tag_object_list}
 
-        company = self.company_create(company_data)
+        self.company_create(company_data)
+        new_company_objs = []
         for language_name, company_name in company_name_list.items():
             company_name_data = self.generate_company_name_data(
-                language_name, company_name, company
+                language_name, company_name
             )
-            new_company_name = self.company_name_create(company_name_data)
-
+            new_company_objs.append(self.company_name_create(company_name_data))
+        for new_company_name in new_company_objs:
             if new_company_name.language.name == language:
                 result = new_company_name.id
                 result_company = CompanyName.objects.prefetch_related(
@@ -105,14 +118,15 @@ class CompanyNameDetailView(APIView):
     def get(self, request, name):
         language = request.META.get("HTTP_X_WANTED_LANGUAGE")
         try:
-            CompanyName.objects.get(name=name)
+            company_id = CompanyName.objects.get(name=name).c_id
             company = CompanyName.objects.prefetch_related(
                 Prefetch(
                     "c_id__tags",
                     queryset=Tag.objects.filter(language__name=language),
                 )
             )
-            company = company.get(language__name=language, name=name)
+
+            company = company.get(language__name=language, c_id=company_id)
         except CompanyName.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
