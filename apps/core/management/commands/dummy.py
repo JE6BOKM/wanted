@@ -60,6 +60,7 @@ class Command(BaseCommand):
                 elif values[i] != "nan" and model == "tag":
                     tags = values[i].split("|")
                     for tag in tags:
-                        TagFactory(name=tag, language=language_model)
+                        t = TagFactory(name=tag, language=language_model)
+                        company_model.tags.add(t)
 
         self.stdout.write("Finish load dummy")
