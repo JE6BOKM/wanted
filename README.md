@@ -1,6 +1,18 @@
-# 원티드랩
+<p align="center">
 
-- 과제 출제 기업 정보
+  <h3 align="center">원티드랩</h3>
+  <p align="center" width="50%">
+  <img src="https://user-images.githubusercontent.com/38058085/141077456-b3e64c9d-98b3-47fe-bdf8-ac6be7c1d219.jpg" style="width:50%"/>
+  <p align="center">
+    Pre-onboarding backend cource project.
+  </p>
+  </p>
+
+</p>
+
+
+
+## 과제 출제 기업 정보
   - 기업명 : 원티드랩
   - [원티드](https://www.wanted.co.kr/)
   - [wanted 채용공고 링크](https://www.wanted.co.kr/company/79)
@@ -82,12 +94,12 @@
 ```
 $ pytest --cov
 ```
-![test](https://user-images.githubusercontent.com/38058085/141072966-0cb4c3e0-2172-4c3c-a0cc-8e3e6b90110e.png)
-![coverage](https://user-images.githubusercontent.com/38058085/141073110-c1b4fe3e-4320-4ac3-9e9c-4c01322184ac.png)
+<p align="center">
+<img src="https://user-images.githubusercontent.com/38058085/141079240-d13b36cc-ec5b-4ff3-80f2-8e29fef42704.png" style="display:block;margin:auto;">
+<img src="https://user-images.githubusercontent.com/38058085/141073110-c1b4fe3e-4320-4ac3-9e9c-4c01322184ac.png" style="width:70%">
+</p>
 
 ## 구현 기능
-
-</br>
 
 ### 회사명 자동완성
 
