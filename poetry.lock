@@ -315,6 +315,18 @@ python-versions = ">=3.6"
 Django = ">=2.2"
 
 [[package]]
+name = "django-coverage-plugin"
+version = "2.0.1"
+description = "Django template coverage.py plugin"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+coverage = "*"
+six = ">=1.4.0"
+
+[[package]]
 name = "django-extensions"
 version = "3.1.3"
 description = "Extensions for Django"
@@ -979,7 +991,7 @@ test = ["pytest", "coverage", "requests", "nbval", "selenium", "pytest-cov", "re
 name = "numpy"
 version = "1.21.4"
 description = "NumPy is the fundamental package for array computing with Python."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7,<3.11"
 
@@ -1011,7 +1023,7 @@ pyparsing = ">=2.0.2,<3"
 name = "pandas"
 version = "1.3.4"
 description = "Powerful data structures for data analysis, time series, and statistics"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7.1"
 
@@ -1699,7 +1711,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "5a8d415e00ef1d53382994b9be8089c00bb50236d886e8c20f2fb9e6aadf7276"
+content-hash = "b1cb6c7fab99f26abcf5e72dd37e0b4486a2a80db18c5517ca98a17564237695"
 
 [metadata.files]
 appnope = [
@@ -1948,6 +1960,9 @@ django-configurations = [
 django-cors-headers = [
     {file = "django-cors-headers-3.10.0.tar.gz", hash = "sha256:cd6f4360f5246569c149dc1c40c907c191f1ec45551e10d2a2e2e68512652f78"},
     {file = "django_cors_headers-3.10.0-py3-none-any.whl", hash = "sha256:cba6e99659abb0e47cc4aaabb8fcde03f193e6bb3b92ba47c5185ec4cedc5d9e"},
+]
+django-coverage-plugin = [
+    {file = "django_coverage_plugin-2.0.1.tar.gz", hash = "sha256:cf8b0265d5556f20b8458114a4babc01258f841fe3b96630de4f0deaf8fa8619"},
 ]
 django-extensions = [
     {file = "django-extensions-3.1.3.tar.gz", hash = "sha256:5f0fea7bf131ca303090352577a9e7f8bfbf5489bd9d9c8aea9401db28db34a0"},

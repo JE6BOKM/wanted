@@ -17,8 +17,6 @@
 
 ## ⭐ 과제 내용
 
----
-
 ### [필수 포함 사항]
 
 - READ.ME 작성
@@ -29,13 +27,11 @@
   - 해당 과제를 진행하면서 회고 내용 블로그 포스팅
 - Swagger나 Postman을 이용하여 API 테스트 가능하도록 구현
 
----
 
 ### [개발 요구사항]
 
 ✔️ **데이터**
 
----
 
 - 회사 정보
   - 회사 이름 (다국어 지원 가능)
@@ -48,7 +44,6 @@
 
   ✔️ **REST API 기능**
 
----
 
 - 회사명 자동완성
   - 회사명의 일부만 들어가도 검색이 되어야 합니다.
@@ -56,8 +51,6 @@
 - 새로운 회사 추가
 
 **✔️ 개발 조건**
-
----
 
 - 제공되는 test case를 통과할 수 있도록 개발해야 합니다.
   [test_app.py](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0d2517b3-b80b-4a1b-82c4-9bc6f2a0d5ae/test_app.py)
@@ -68,35 +61,29 @@
 - 필요한 조건이 있다면 추가하셔도 좋습니다.
 - Docker로 개발하면 가산점이 있습니다.
 
----
-
----
-
 ## 사용 기술 및 tools
 
 > - Back-End : <img src="https://img.shields.io/badge/Python 3.8-3776AB?style=for-the-badge&logo=Python&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Django 3.2-092E20?style=for-the-badge&logo=Django&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=PostgreSQL&logoColor=white"/>
 > - Deploy : <img src="https://img.shields.io/badge/AWS_EC2-232F3E?style=for-the-badge&logo=Amazon&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Docker-0052CC?style=for-the-badge&logo=Docker&logoColor=white"/>
 > - ETC : <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=Github&logoColor=white"/>&nbsp;<img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"/>
 
----
 
----
 
 ## 🏄‍♀️ 모델링
 
 ![image](https://user-images.githubusercontent.com/79964569/140952581-2c215f7f-a93d-49f7-8bf6-c438ffa6536a.png)
 
----
-
----
 
 ## API
 
 [링크-postman document](https://documenter.getpostman.com/view/13670333/UVC5F7t1)
 
----
-
----
+## Coverage
+```
+$ pytest --cov
+```
+![test](https://user-images.githubusercontent.com/38058085/141072966-0cb4c3e0-2172-4c3c-a0cc-8e3e6b90110e.png)
+![coverage](https://user-images.githubusercontent.com/38058085/141073110-c1b4fe3e-4320-4ac3-9e9c-4c01322184ac.png)
 
 ## 구현 기능
 
@@ -219,17 +206,7 @@
 
 ```bash
     # git clone
-    git clone https://github.com/JE6BOKM/wanted.git
-
-    cd wanted
-
-    # db migration
-    docker-compose -f docker/compose/local.yml run --rm django ./manage.py makemigrations
-    docker-compose -f docker/compose/local.yml run --rm django ./manage.py migrate
-
-    # superuser create
-    # ! admin 이란 이름으로 생성 할 것
-    docker-compose -f docker/compose/local.yml run --rm django ./manage.py createsuperuser
+    git clone https://github.com/JE6BOKM/wanted.git && cd wanted
 
     # 실행
     docker-compose -f docker/compose/local.yml up
@@ -237,7 +214,10 @@
 
 ### 배포용
 
-...
+```bash
+    # 실행
+    docker-compose -f docker/compose/prod.yml up
+```
 
 ## 폴더 구조
 
@@ -327,9 +307,6 @@
 └── wait_for_postgres.py
 ```
 
----
-
----
 
 # Reference
 
