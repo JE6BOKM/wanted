@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib.sessions.middleware import SessionMiddleware
 from django.test import RequestFactory
 
+import pandas as pd
 import pytest
 from dj_rest_auth.utils import jwt_encode
 from rest_framework.test import APIClient
@@ -20,27 +21,28 @@ pytestmark = pytest.mark.django_db
 User = settings.AUTH_USER_MODEL
 
 
+data = pd.read_csv("wanted_temp_data.csv")
+
+
 @pytest.fixture
 def company_info_data():
-    ko = LanguageFactory(name="ko")
-    tags = TagFactory.create_batch(size=10, language=ko)
+    data = pd.read_csv("wanted_temp_data.csv").reindex()
 
-    c1 = CompanyFactory()
-    c1.tags.add(tags[0])
-    CompanyNameFactory(name="주식회사 링크드코리아", c_id=c1, language=ko)
-    c2 = CompanyFactory()
-    c2.tags.add(tags[1])
-    CompanyNameFactory(name="스피링크", c_id=c2, language=ko)
+    for row in data.iloc:
 
-    c3 = CompanyFactory()
-    tags = [
-        TagFactory(name="태그_4", language=ko),
-        TagFactory(name="태그_20", language=ko),
-        TagFactory(name="태그_16", language=ko),
-    ]
-    c3.tags.add(*tags)
-    CompanyNameFactory(name="원티드랩", c_id=c3, language=ko)
-    CompanyNameFactory(name="Wantedlab", c_id=c3, language=ko)
+        index, values = row.index, row.values
+        company_model = CompanyFactory()
+        for i in range(len(index)):
+            model, lang = index[i].split("_")
+            language_model = LanguageFactory(name=lang)
+            if values[i] != "nan" and model == "company":
+                CompanyNameFactory(
+                    name=values[i], c_id=company_model, language=language_model
+                )
+            elif values[i] != "nan" and model == "tag":
+                tags = values[i].split("|")
+                for tag in tags:
+                    TagFactory(name=tag, language=language_model)
 
 
 @pytest.fixture

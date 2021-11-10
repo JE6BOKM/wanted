@@ -3,9 +3,16 @@ from math import ceil
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand
 
+import pandas as pd
 from django_extensions.management.shells import import_objects
 
-from test.factories import UserFactory
+from test.factories import (
+    CompanyFactory,
+    CompanyNameFactory,
+    LanguageFactory,
+    TagFactory,
+    UserFactory,
+)
 
 User = get_user_model()
 
@@ -36,5 +43,23 @@ class Command(BaseCommand):
         globals().update(imported_objects)
 
         UserFactory.create_batch(size=ceil(posts_cnt / 10))
+
+        # company info dummy data
+        data = pd.read_csv("wanted_temp_data.csv")
+
+        for row in data.iloc:
+            index, values = row.index, row.values
+            company_model = CompanyFactory()
+            for i in range(len(index)):
+                model, lang = index[i].split("_")
+                language_model = LanguageFactory(name=lang)
+                if values[i] != "nan" and model == "company":
+                    CompanyNameFactory(
+                        name=values[i], c_id=company_model, language=language_model
+                    )
+                elif values[i] != "nan" and model == "tag":
+                    tags = values[i].split("|")
+                    for tag in tags:
+                        TagFactory(name=tag, language=language_model)
 
         self.stdout.write("Finish load dummy")
