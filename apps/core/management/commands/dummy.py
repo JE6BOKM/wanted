@@ -1,5 +1,3 @@
-from math import ceil
-
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand
 
@@ -21,16 +19,19 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         # Named (optional) arguments
         parser.add_argument(
-            "-c",
+            "-admin",
             type=str,
-            help="Add number of posts",
+            help="Add admin account",
         )
 
     def handle(self, *args, **kwargs):
-        if not kwargs.get("c"):
-            posts_cnt = 10
-        else:
-            posts_cnt = int(kwargs.get("p"))
+        if kwargs.get("admin"):
+            UserFactory(
+                username="Admin",
+                email="admin@admin.net",
+                password="1234",
+                is_staff=True,
+            )
 
         self.stdout.write("Start loading dummy")
 
@@ -42,7 +43,7 @@ class Command(BaseCommand):
         imported_objects = import_objects(options, style)
         globals().update(imported_objects)
 
-        UserFactory.create_batch(size=ceil(posts_cnt / 10))
+        UserFactory.create_batch(size=5)
 
         # company info dummy data
         data = pd.read_csv("wanted_temp_data.csv")
